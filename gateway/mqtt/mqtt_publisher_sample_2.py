@@ -1,3 +1,5 @@
+# This MQTT client writes to a pre-created ThingSpeak account
+
 import time
 import paho.mqtt.publish as publish
 import psutil
