@@ -1,3 +1,5 @@
+/* Simple program to generate pulses from PB_1 of STM32Nucleo F042K6 and receive at PA_12 */
+
 #include "mbed.h"
 
 Ticker pulse_timer; // timer to generate the output pulse train from PA_12
