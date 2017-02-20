@@ -12,6 +12,10 @@
 #
 # This example requires the Paho MQTT client package which
 # is available at: http://eclipse.org/paho/clients/python
+#
+# Requirements:
+# o Python MQTT Client: "pip install paho-mqtt"
+# o PS Utilities: "pip install psutil"
 
 import time
 import paho.mqtt.publish as publish
