@@ -9,11 +9,6 @@ channelID = "224072"
 apiKey = "IV4RT30CC3SUUT6L"
 mqttHost = "mqtt.thingspeak.com"
 
-# Connection Parameters
-tTransport = "tcp"
-tPort = 1883
-tTLS = None
-
 # Create topic string
 topic = "channels/" + channelID + "/publish/" + apiKey
 
