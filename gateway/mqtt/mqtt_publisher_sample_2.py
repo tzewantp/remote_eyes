@@ -1,5 +1,18 @@
 # This MQTT client writes to a pre-created ThingSpeak account
 
+# ThingSpeak Update Using MQTT
+# Copyright 2016, MathWorks, Inc
+
+# This is an example of publishing to multiple fields simultaneously.
+# Connections over standard TCP, websocket or SSL are possible by setting
+# the parameters below.
+#
+# CPU and RAM usage is collected every 20 seconds and published to a
+# ThingSpeak channel using an MQTT Publish
+#
+# This example requires the Paho MQTT client package which
+# is available at: http://eclipse.org/paho/clients/python
+
 import time
 import paho.mqtt.publish as publish
 import psutil
@@ -14,6 +27,10 @@ topic = "channels/" + channelID + "/publish/" + apiKey
 
 # Initial value
 tempValue = 32.1
+
+tTransport = "tcp"
+tPort = 1883
+tTLS = None
 
 while True:
 
