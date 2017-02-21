@@ -1,3 +1,8 @@
+# This program can run on BeagleBone. It waits for a 4 bytes packet that begins with the start byte 0xAB.
+# Packet scheme:
+#     <Start Byte>, <Address - Always 0x01>, <Command Byte - 0x88>, <Sensor Data - Either 0x00 or 0x01>
+# Future improvements: Use circular buffer scheme.
+
 import serial
 import time
 
