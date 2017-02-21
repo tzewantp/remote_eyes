@@ -29,9 +29,7 @@ mqttHost = "mqtt.thingspeak.com"
 # Create topic string
 topic = "channels/" + channelID + "/publish/" + apiKey
 
-# Initial value
-tempValue = 32.1
-
+# Connection type
 tTransport = "tcp"
 tPort = 1883
 tTLS = None
