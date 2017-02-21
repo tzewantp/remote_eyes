@@ -1,2 +1,3 @@
-# remote_eyes
+# RemoteEyes
 Repository for remote monitoring project
+
