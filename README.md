@@ -10,7 +10,7 @@ To Do:
    - Set up private MQTT broker later.     
    - The above example uses the InfluxDB Python client plugin. Refer to:
      http://influxdb-python.readthedocs.io/en/latest/api-documentation.html as well as
-     example in /gateway/influxapp/flux_test1.py.
+     example in https://github.com/tzewantp/remote_eyes/blob/master/gateway/influxapp/flux_test1.py.
 
 2. Setting up of private broker:
    - Refer to the following link:
