@@ -82,7 +82,7 @@ int main() {
     pc_connection.baud(BAUDRATE);
         
     pc_connection.printf("\n=====================================================\n");
-    pc_connection.printf("\n\nmbed STM32F401RE Nucleo : My Simple Pulse Generator\n\n");
+    pc_connection.printf("\n mbed STM32F401RE Nucleo : My Simple Pulse Generator \n");
     pc_connection.printf("\n=====================================================\n");
     pc_connection.printf("\nPress:\n");
     pc_connection.printf("\n'S' : To toggle blinking.\n\n");
