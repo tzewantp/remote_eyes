@@ -28,4 +28,7 @@ To Do:
    - The following example uses the **mbed asynchronous APIs**:
      https://developer.mbed.org/teams/SiliconLabs/wiki/Using-the-mbed-asynchronous-APIs
      This API makes use of asynchronous event handling through the serial channel.
+     
      Note: It is tested on the STM32F401RE board, but not yet on the STM32F042K6 board.
+     
+     Sample program: https://github.com/tzewantp/remote_eyes/blob/master/embedded/pulse_generator/async_serial.cpp
