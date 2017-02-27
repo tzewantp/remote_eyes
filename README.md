@@ -15,6 +15,8 @@ To Do:
 2. Setting up of private broker:
    - Refer to the following link:
    
-3. Setting up Chronograf for data visualisation:
+3. Setting up Chronograf or Grafana for data visualisation:
 
 4. Receiving of XBee messages on BeagleBone:
+
+5. Writing the Pulse Generator
