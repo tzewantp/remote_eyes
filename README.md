@@ -12,12 +12,16 @@ To Do:
      http://influxdb-python.readthedocs.io/en/latest/api-documentation.html as well as
      example in https://github.com/tzewantp/remote_eyes/blob/master/gateway/influxapp/flux_test1.py.
 
+
 **2. Setting up of private broker:**
    - Refer to the following link:
    
+
 **3. Setting up Chronograf or Grafana for data visualisation:**
 
+
 **4. Receiving of XBee messages on BeagleBone:**
+
 
 **5. Writing the Pulse Generator:** 
    - Write a simple serial terminal program (controlled from PC) to control how the hardware should respond to commands from the PC.
