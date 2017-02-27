@@ -19,7 +19,7 @@ To Do:
 
 **4. Receiving of XBee messages on BeagleBone:**
 
-**5. Writing the Pulse Generator** 
+**5. Writing the Pulse Generator:** 
    - Write a simple serial terminal program (controlled from PC) to control how the hardware should respond to commands from the PC.
    - The following example uses the **mbed asynchronous APIs**:
      https://developer.mbed.org/teams/SiliconLabs/wiki/Using-the-mbed-asynchronous-APIs
