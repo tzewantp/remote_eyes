@@ -21,7 +21,8 @@ To Do:
 
 
 **4. Receiving of XBee messages on BeagleBone:**
-
+   - Refer to the following example:
+     https://github.com/tzewantp/remote_eyes/blob/master/gateway/xbee/receive_sample.py
 
 **5. Writing the Pulse Generator:** 
    - Write a simple serial terminal program (controlled from PC) to control how the hardware should respond to commands from the PC.
