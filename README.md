@@ -18,7 +18,8 @@ To Do:
      http://howtoprogram.xyz/2016/10/15/install-mosquitto-mqtt-broker-ubuntu-16-04-lts-xenial-xerus/
 
 **3. Setting up Chronograf or Grafana for data visualisation:**
-
+   - Refer to:
+     http://coendegroot.com/grafana-influxdb-and-python-simple-sample/
 
 **4. Receiving of XBee messages on BeagleBone:**
    - Refer to the following example:
