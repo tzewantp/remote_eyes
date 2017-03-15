@@ -13,7 +13,7 @@ To Do:
      example in https://github.com/tzewantp/remote_eyes/blob/master/gateway/influxapp/flux_test1.py.
 
 
-**2. Setting up of private broker:**
+**2. Setting up of private broker in Ubuntu:**
    - Refer to the following link:
      http://howtoprogram.xyz/2016/10/15/install-mosquitto-mqtt-broker-ubuntu-16-04-lts-xenial-xerus/
 
