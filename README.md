@@ -37,9 +37,8 @@ To Do:
      
 **6. BeagleBone Networking:** 
    - BeagleBone Black /etc/network/interfaces file should look like this:
-     iface usb0 inet static
-     
-     address 192.168.7.2
+     'iface usb0 inet static'
+     'address 192.168.7.2'
      
      netmask 255.255.255.0
      
