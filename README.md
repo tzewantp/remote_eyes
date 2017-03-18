@@ -58,3 +58,5 @@ To Do:
      If the gateway (192.168.7.1) is not shown, add with:
      
      route add default gw 192.168.7.1
+
+   - Finally, ping "www.google.com" to see if the URL could be resolved by the nameserver.
