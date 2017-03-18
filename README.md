@@ -34,3 +34,21 @@ To Do:
      Note: It is tested on the STM32F401RE board, but not yet on the STM32F042K6 board.
      
      Sample program: https://github.com/tzewantp/remote_eyes/blob/master/embedded/pulse_generator/async_serial.cpp
+     
+**6. BeagleBone Networking:** 
+   - BeagleBone Black /etc/network/interfaces file should look like this:
+     iface usb0 inet static
+     address 192.168.7.2
+     netmask 255.255.255.0
+     network 192.168.7.0
+     gateway 192.168.7.1
+     dns-nameservers 8.8.8.8
+     dns-nameservers 8.8.4.4
+     
+   - This file - /etc/resolv.conf should be modified as such:
+     nameserver 8.8.8.8
+     nameserver 8.8.4.4
+   
+   - Check the route using the command: route -n
+     If the gateway (192.168.7.1) is not shown, add with:
+     route add default gw 192.168.7.1
