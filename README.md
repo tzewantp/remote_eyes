@@ -37,8 +37,9 @@ To Do:
      
 **6. BeagleBone Networking:** 
    - BeagleBone Black /etc/network/interfaces file should look like this:
-     'iface usb0 inet static'
-     'address 192.168.7.2'
+...     
+     iface usb0 inet static
+     address 192.168.7.2
      
      netmask 255.255.255.0
      
@@ -48,7 +49,7 @@ To Do:
      
      dns-nameservers 8.8.8.8
      dns-nameservers 8.8.4.4
-     
+...     
    - This file - /etc/resolv.conf should be modified as such:
      nameserver 8.8.8.8
      nameserver 8.8.4.4
