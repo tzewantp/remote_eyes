@@ -46,14 +46,15 @@ To Do:
      network 192.168.7.0
      
      gateway 192.168.7.1
-     
-     dns-nameservers 8.8.8.8
-     dns-nameservers 8.8.4.4
+ 
 ...     
    - This file - /etc/resolv.conf should be modified as such:
+   
      nameserver 8.8.8.8
+     
      nameserver 8.8.4.4
    
    - Check the route using the command: route -n
      If the gateway (192.168.7.1) is not shown, add with:
+     
      route add default gw 192.168.7.1
