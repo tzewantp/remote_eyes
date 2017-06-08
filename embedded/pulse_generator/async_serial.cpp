@@ -1,3 +1,8 @@
+/*
+ * This API supports Nucleo-F401RE,
+ * but may not support Nucleo-F042K6.
+*/
+
 #include "mbed.h"
 
 /*------------ Constant definitions --------------*/
