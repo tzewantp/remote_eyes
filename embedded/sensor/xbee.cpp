@@ -20,7 +20,7 @@ int main()
     
     while(1)
     {
-        xbee_Send();
+        xbee_Send(TestMsg[], 5);
         wait(5);
     }
 }
