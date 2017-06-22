@@ -21,7 +21,7 @@ class myListenThread (threading.Thread):
         self.threadID = threadID
         self.name = name
     def run(self):
-        print "Starting " + self.name
+        print "Starting: " + self.name
         listen_xbee(self.name)
         print "Exiting " + self.name
 
@@ -32,7 +32,7 @@ class myPublishMqttThread (threading.Thread):
         self.threadID = threadID
         self.name = name
     def run(self):
-        print "Starting " + self.name
+        print "Starting: " + self.name
         insert_mqtt(self.name)
         print "Exiting " + self.name
 
