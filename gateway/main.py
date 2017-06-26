@@ -61,7 +61,7 @@ def init_serial(ser):
 
 # Sending Data
 def simulate_xbee_node_sending(threadName):
-    header = [0x7E, 0x00, 0x0F, 0x00, 0x01]   # This is a list
+    header = [0x00, 0x7E, 0x00, 0x0F, 0x00, 0x01]   # This is a list
     mac64addr = [0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08]
     options = [0x00]
     data = [0x01, 0x00, 0x00, 0x00]
@@ -76,7 +76,7 @@ def simulate_xbee_node_sending(threadName):
         # Calculate the checksum byte. Exclude first 3 bytes.
         checksum_byte = 0
         for i in range(len(packet)):
-            if(i > 2):
+            if(i > 3):
                 checksum_byte += packet[i] 
 
         # Take only the lowest 8 bits
@@ -103,12 +103,6 @@ def simulate_xbee_node_sending(threadName):
 # Define thread function that listens to xbee:
 def listen_xbee(threadName):
     while True:
-        # .read(size = 1):
-        # Read size bytes from the serial port. If a timeout is set it may 
-        # return less characters as requested. With no timeout it will block 
-        # until the requested number of bytes is read.
-        # Changed in version 2.5: Returns an instance of bytes when available 
-        # (Python 2.6 and newer) and str otherwise.
         if receive.check_packet() == True:
             xbeeCmd = receive.get_command()
             xbeeData = receive.get_data()
