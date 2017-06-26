@@ -1,12 +1,16 @@
 import serial
- 
-mySerial = serial.Serial('COM7', 9600)
+
+global mySerial
 buffer = [0 for i in range(100)]         # Array to store received data
 bytes_read = 0                           # Counter to track number of bytes read
 start_index = -1                         # Index into the array to point to start byte
-packet_cnt = 0
- 
-while True:
+
+
+# Function to allow caller to set the serial port object
+def set_serial_port(pserial):
+    mySerial = pserial
+     
+def check_packet():
     if (mySerial.in_waiting > 0):
         cnt = 0
         while (cnt < mySerial.in_waiting):
@@ -25,3 +29,10 @@ while True:
                 start_index = -1
                 packet_cnt = 0
                 bytes_read = 0
+
+ def get_command():
+    print '..get command'
+ 
+ def get_data():
+    print '..get data'
+ 

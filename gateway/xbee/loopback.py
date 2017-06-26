@@ -39,22 +39,27 @@ def serialDataPump():
 
     send_array = bytearray(packet)  #create byte array
     while True:
-        #ser.write(bytes("Test\n"))
-        ser.write(bytes(send_array))
-        time.sleep(1)
+        ser.write(bytes("Test\n"))
+        #ser.write(bytes(send_array))
+        time.sleep(6)
         
  
 def serialDataTestRcv():
     print 'Started Receiving Thread'
     while True:
-        line = ser.read(19)
+        line = ser.readline()
         print 'received ' + str(line)
-    
-ser = serial.serial_for_url('loop://', timeout=1)
+
+        
+def startSerialThreads():
+    thread1 = threading.Thread(target = serialDataPump)
+    #thread2 = threading.Thread(target = serialDataTestRcv)
+    thread1.start()
+    #thread2.start()
+    thread1.join()
+    exit()
+        
+global ser        
+ser = serial.serial_for_url('loop://')
+
       
-thread1 = threading.Thread(target = serialDataPump)
-thread2 = threading.Thread(target = serialDataTestRcv)
-thread1.start()
-thread2.start()
-thread1.join()
-exit()

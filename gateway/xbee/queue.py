@@ -42,7 +42,7 @@ def listen_xbee(threadName):
     while True:
         msg_queue.put(value)
         print "inserted:", value
-	value += 1	
+	    value += 1	
         time.sleep(3)
 
 # Define thread function that publish MQTT message: 
