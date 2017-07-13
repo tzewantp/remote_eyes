@@ -28,9 +28,11 @@ def check_packet():
     global buffer
     global complete_xbee_pkt
     
-    if (mySerial.in_waiting > 0):
+    bytes_in_waiting = mySerial.in_waiting
+    if (bytes_in_waiting > 0):
+        print 'Total bytes to read is %d' % bytes_in_waiting    
         cnt = 0
-        while (cnt < mySerial.in_waiting):
+        while (cnt < bytes_in_waiting):
             # .read(size = 1):
             # Read size bytes from the serial port. If a timeout is set it may 
             # return less characters as requested. With no timeout it will block 
@@ -39,28 +41,29 @@ def check_packet():
             # (Python 2.6 and newer) and str otherwise.        
             my_byte_str = mySerial.read(1)         # Read 1 byte at a time. Returned type is 'char'
             buffer[bytes_read] = ord(my_byte_str)  # ord() converts from 'char' to 'int'
-            if (buffer[bytes_read] == 0x7E):       # 0x7E is the start byte
-                start_index = bytes_read           # Track start_index for start byte
-                print 'start_index found at %d' % start_index
+            if (start_index is -1):
+                if (buffer[bytes_read] == 0x7E):       # 0x7E is the start byte
+                    start_index = bytes_read           # Track start_index for start byte
+                    print '->start_index found at %d' % start_index
             bytes_read = bytes_read + 1  
             cnt = cnt + 1
-    
-        if (start_index is not -1):                 # Means that start byte is found.
+            
+        if (start_index is not -1):                    # Means that start byte is found.
             packet_bytes = packet_bytes + cnt
             if (packet_bytes > 3):
                 packet_len = (buffer[start_index + 1] << 8) + buffer[start_index + 2] 
                 packet_len += 4                     # Add 4 bytes (First 3 bytes + checksum)
-                print 'Packet len is %d' % packet_len
-            if (packet_bytes >= packet_len):
-                print 'Packet is found'
-                # Copy out the packet
-                for x in range(packet_len):
-                    complete_xbee_pkt[x] = buffer[start_index + x]
+                print '->Packet len is %d' % packet_len
+                if (packet_bytes >= packet_len):
+                    print '->Packet is found'
+                    # Copy out the packet
+                    for x in range(packet_len):
+                        complete_xbee_pkt[x] = buffer[start_index + x]
                 
-                start_index = -1
-                packet_bytes = 0
-                bytes_read = 0
-                return True
+                    start_index = -1
+                    packet_bytes = 0
+                    bytes_read = 0
+                    return True
     return False
 
 def get_command():
