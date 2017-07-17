@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 
+
 import sys
 import signal
 from influxdb import InfluxDBClient
@@ -7,7 +8,8 @@ import json
 import urllib
 import logging
 import paho.mqtt.client as mqtt
-import datetime
+#import datetime
+import time
 
 # This lets the message received event handler know that the DB connection is ready
 dbConn = None
@@ -34,7 +36,7 @@ v = 0
 # For writing to InfluxDB
 # TimeStamp:
 #timestamp=datetime.datetime.utcnow().isoformat()
-timestamp = "2009-11-10T23:00:00Z"
+#timestamp = "2009-11-10T23:00:00Z"
 # Station Name that is recording the measurement
 station_name="S2"
   
@@ -95,10 +97,12 @@ def sendToDB(payload):
     '''This function will transmit the given payload to the InfluxDB server'''
 
     global dbConn
-    now = datetime.datetime.today()
+    #now = datetime.datetime.today()
+    #now = datetime.datetime.utcnow()
+    now = time.gmtime()
     pointValues = [
        {
-          "time": now.strftime("%Y-%m-%d %H:%M:%S"),
+          "time": time.strftime("%Y-%m-%d %H:%M:%S", now),
           "measurement": dbcolname,
           "tags": {
               "nodeId": "node_1",
@@ -124,7 +128,7 @@ def startInfluxDB():
     global dbConn
     try:
         dbConn = InfluxDBClient(dbhost, dbport, dbuser, dbpwd, dbname)
-        dbConn.create_database(dbname)
+        #dbConn.create_database(dbname)
         logging.info("Connected to InfluxDB.")
         print("Connected to InfluxDB.")
     except InfluxDBClientError as e:
