@@ -64,12 +64,15 @@ def simulate_xbee_node_sending(threadName):
     header = [0x00, 0x7E, 0x00, 0x0F, 0x00, 0x01]   # This is a list
     mac64addr = [0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08]
     options = [0x00]
-    data = [0x01, 0x00, 0x00, 0x00]
+    data = [0x00, 0x00, 0x00, 0x00]
     checksum = [0x00]   # Arbitrary checksum
     
     while True:
-        data[0] += 1
-        
+        if(data[0] < 255):
+            data[0] += 1
+        else:
+            data[0] = 0
+
         # Join the list to form the packet with the checksum byte not calculated yet.
         packet = header + mac64addr + options + data + checksum
     
@@ -97,7 +100,7 @@ def simulate_xbee_node_sending(threadName):
         # (Python 2.6 and newer) and str otherwise.
         bwritten = ser.write(bytes(send_array))
         print "Bytes sent = " + str(bwritten)
-        time.sleep(6)
+        time.sleep(1)
         
         
 # Define thread function that listens to xbee:
