@@ -100,7 +100,7 @@ def simulate_xbee_node_sending(threadName):
         # (Python 2.6 and newer) and str otherwise.
         bwritten = ser.write(bytes(send_array))
         print "Bytes sent = " + str(bwritten)
-        time.sleep(1)
+        time.sleep(5)
         
         
 # Define thread function that listens to xbee:

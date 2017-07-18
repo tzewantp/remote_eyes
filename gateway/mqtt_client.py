@@ -4,10 +4,19 @@
 import time
 import paho.mqtt.client as mqtt
 
+''' #define SIMPLE_CONNECT  True '''
+
 def publish_msg(reading):
-    mqttc = mqtt.Client()
-    mqttc.connect("m2m.eclipse.org", 1883, 60)
-    print('reading=%.2f' % reading)
-    mqttc.publish("remote_eyes/sensor","%.2f" % reading);
-    mqttc.disconnect()
-     
+    #if SIMPLE_CONNECT is True:
+        try:
+            mqttc = mqtt.Client()
+            print('Connecting ...')
+            mqttc.connect("m2m.eclipse.org", 1883, 60)
+            print('Connected: reading=%.2f' % reading)
+            mqttc.publish("remote_eyes/sensor","%.2f" % reading);
+            mqttc.disconnect()
+        except Exception, e:
+            print('Error in connecting' + e.message)
+    #else:
+    #    print('TODO: Connection with callback handling')
+    
