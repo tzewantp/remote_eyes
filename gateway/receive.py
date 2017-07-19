@@ -1,8 +1,10 @@
 import serial
 
+bufferSize = 100
+stdPacketLen = 19			    # We expect only 19 bytes in packet	
 mySerial = None
 #mySerial = serial.Serial('COM7', 9600)
-buffer = [0 for i in range(100)]            # Array to store received data
+buffer = [0 for i in range(bufferSize)]            # Array to store received data
 complete_xbee_pkt = [0 for i in range(30)]  # Array to store complete packet
 bytes_read = 0                              # Counter to track number of bytes read
 start_index = -1                            # Index into the array to point to start byte
@@ -27,7 +29,8 @@ def check_packet():
     global packet_bytes
     global buffer
     global complete_xbee_pkt
-    
+    global stdPacketLen   
+ 
     bytes_in_waiting = mySerial.in_waiting
     if (bytes_in_waiting > 0):
         print 'Total bytes to read is %d' % bytes_in_waiting    
@@ -54,7 +57,15 @@ def check_packet():
                 packet_len = (buffer[start_index + 1] << 8) + buffer[start_index + 2] 
                 packet_len += 4                     # Add 4 bytes (First 3 bytes + checksum)
                 print '->Packet len is %d' % packet_len
-                if (packet_bytes >= packet_len):
+                if (packet_len is not stdPacketLen):
+		    # Purge this packet
+                    start_index = -1
+                    packet_bytes = 0
+                    bytes_read = 0
+                    print '-------> Unexpected packet len. Packet is purged.'
+                    return False              	    
+                
+		if (packet_bytes >= packet_len):
                     print '->Packet is found'
                     # Copy out the packet
                     for x in range(packet_len):
