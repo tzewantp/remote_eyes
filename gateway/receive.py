@@ -84,6 +84,7 @@ def get_command():
 def get_data():
     print '..get data'
     global complete_xbee_pkt
-    data = complete_xbee_pkt[14]
+    data = complete_xbee_pkt[14] << 8
+    data = data + complete_xbee_pkt[15]    
     return data
  

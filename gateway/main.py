@@ -7,6 +7,7 @@ import serial
 import receive
 import mqtt_client
  
+ 
 # ============================================================================
 # Create thread that writes to queue
 # To implement a new thread using the threading module:
@@ -51,11 +52,13 @@ class mySimXbeeNode (threading.Thread):
         print "Exiting " + self.name
         
 # Start Serial Port
-def init_serial(ser):         
-    # Create thread that simulates the Xbee node sending
-    xbeeSendThread = mySimXbeeNode(1, "Simulate XBee Send Thread")
-    xbeeSendThread.start()  
+def init_serial(ser, simSend):
 
+    if(simSend == True):
+        # Create thread that simulates the Xbee node sending
+        xbeeSendThread = mySimXbeeNode(1, "Simulate XBee Send Thread")
+        xbeeSendThread.start()  
+        
     # Pass the serial port instance to the receive module
     receive.set_serial_port(ser)
 
@@ -124,14 +127,19 @@ def insert_mqtt(threadName):
 if __name__ == "__main__":
     print("main.py is being run")
 
-    global ser        
-    ser = serial.serial_for_url('loop://')
-    
+    global ser 
+    simulateSending = False   
+
+    if(simulateSending == True):    
+        ser = serial.serial_for_url('loop://')
+    else:
+        ser = serial.Serial('COM5', 9600)
+        
     # Create the queue
     msg_queue = Queue.Queue()
 
     # Start the serial port
-    init_serial(ser)
+    init_serial(ser, simulateSending)
     
     # Create the threads
     listenThread = myListenThread(1, "Listen Thread")
