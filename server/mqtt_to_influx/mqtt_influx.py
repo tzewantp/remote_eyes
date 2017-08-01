@@ -6,9 +6,8 @@ import signal
 from influxdb import InfluxDBClient
 import json
 import urllib
-c
 import paho.mqtt.client as mqtt
-#import datetime
+import logging
 import time
 
 # This lets the message received event handler know that the DB connection is ready
