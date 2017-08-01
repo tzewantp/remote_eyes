@@ -71,10 +71,10 @@ def simulate_xbee_node_sending(threadName):
     checksum = [0x00]   # Arbitrary checksum
     
     while True:
-        if(data[0] < 255):
-            data[0] += 1
+        if(data[1] < 255):
+            data[1] += 1
         else:
-            data[0] = 0
+            data[1] = 0
 
         # Join the list to form the packet with the checksum byte not calculated yet.
         packet = header + mac64addr + options + data + checksum
@@ -133,7 +133,8 @@ if __name__ == "__main__":
     if(simulateSending == True):    
         ser = serial.serial_for_url('loop://')
     else:
-        ser = serial.Serial('COM5', 9600)
+        #ser = serial.Serial('COM5', 9600)
+        ser = serial.Serial('/dev/ttyUSB1', 9600)
         
     # Create the queue
     msg_queue = Queue.Queue()

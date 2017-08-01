@@ -49,8 +49,8 @@ def _sigIntHandler(signum, frame):
 
 def setupLogging():
     '''Sets up logging'''
-    verbosityLevel = 5
-    logging.basicConfig(level=verbosityLevel, format='%(asctime)s %(message)s')
+    verbosityLevel = 10
+    logging.basicConfig(filename='mqtt_influx.log', level=verbosityLevel, format='%(asctime)s %(message)s')
 
 def setupSigInt():
     '''Sets up our Ctrl + C handler'''
@@ -60,6 +60,7 @@ def setupSigInt():
 def _mqttOnConnect(client, userdata, flag, rc):
     '''This is the event handler for when one has connected to the MQTT broker. 
        Will exit() if connection is not successful.'''
+    print("Connected to MQTT broker successfully.")
     if rc == 0:
         logging.info("Connected to MQTT broker successfully.")
         client.subscribe(topic, qos=mqttqos)
@@ -85,7 +86,7 @@ def _mqttOnMessage(client, userdata, message):
     global dbConn
     '''This is the event handler for a received message from the MQTT broker.'''
     logging.debug("Received message: " + str(message.payload))
-    print("message received  "  ,str(message.payload))
+    print("On message received  "  , str(message.payload))
 
     if dbConn is not None:
         sendToDB(message.payload)
