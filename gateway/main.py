@@ -103,7 +103,7 @@ def simulate_xbee_node_sending(threadName):
         # (Python 2.6 and newer) and str otherwise.
         bwritten = ser.write(bytes(send_array))
         print "Bytes sent = " + str(bwritten)
-        time.sleep(5)
+        time.sleep(16)
         
         
 # Define thread function that listens to xbee:
@@ -128,7 +128,7 @@ if __name__ == "__main__":
     print("main.py is being run")
 
     global ser 
-    simulateSending = False   
+    simulateSending = True
 
     if(simulateSending == True):    
         ser = serial.serial_for_url('loop://')
