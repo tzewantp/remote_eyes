@@ -6,7 +6,7 @@ import signal
 from influxdb import InfluxDBClient
 import json
 import urllib
-import logging
+c
 import paho.mqtt.client as mqtt
 #import datetime
 import time
