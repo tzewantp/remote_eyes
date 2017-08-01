@@ -1,5 +1,6 @@
 import serial
 import logging
+import time
 
 bufferSize = 100
 stdPacketLen = 19			    # We expect only 19 bytes in packet	
@@ -27,6 +28,7 @@ def set_serial_port(pserial):
     global packet_bytes
     packet_bytes = 0     
     setupLogging()
+    time.sleep(2)
     logging.info("Setup serial port complete.")
     
 def check_packet():
