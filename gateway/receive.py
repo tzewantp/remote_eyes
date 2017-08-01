@@ -1,4 +1,5 @@
 import serial
+import logging
 
 bufferSize = 100
 stdPacketLen = 19			    # We expect only 19 bytes in packet	
@@ -10,6 +11,11 @@ bytes_read = 0                              # Counter to track number of bytes r
 start_index = -1                            # Index into the array to point to start byte
 packet_bytes = 0                            # Number of bytes received   
 
+def setupLogging():
+    '''Sets up logging'''
+    verbosityLevel = 20 # INFO
+    logging.basicConfig(filename='gateway.log', level=verbosityLevel, format='%(asctime)s %(message)s')
+
 # Function to allow caller to set the serial port object
 def set_serial_port(pserial):
     global mySerial 
@@ -20,7 +26,9 @@ def set_serial_port(pserial):
     start_index = -1
     global packet_bytes
     packet_bytes = 0     
-     
+    setupLogging()
+    logging.info("Setup serial port complete.")
+    
 def check_packet():
     #print 'check packet called'
     global mySerial
@@ -63,6 +71,7 @@ def check_packet():
                     packet_bytes = 0
                     bytes_read = 0
                     print '-------> Unexpected packet len. Packet is purged.'
+                    logging.info("Unexpected pkt - purged")
                     return False              	    
                 
 		if (packet_bytes >= packet_len):
@@ -74,15 +83,16 @@ def check_packet():
                     start_index = -1
                     packet_bytes = 0
                     bytes_read = 0
+                    logging.info("Pkt received")
                     return True
     return False
 
 def get_command():
-    print '..get command'
+    #print '..get command'
     return 10
  
 def get_data():
-    print '..get data'
+    #print '..get data'
     global complete_xbee_pkt
     data = complete_xbee_pkt[14] << 8
     data = data + complete_xbee_pkt[15]    

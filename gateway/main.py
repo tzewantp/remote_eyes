@@ -133,7 +133,6 @@ if __name__ == "__main__":
     if(simulateSending == True):    
         ser = serial.serial_for_url('loop://')
     else:
-        #ser = serial.Serial('COM5', 9600)
         ser = serial.Serial('/dev/ttyUSB0', 9600)
         
     # Create the queue
