@@ -1,5 +1,6 @@
 import serial
 import logging
+import time
 
 bufferSize = 100
 stdPacketLen = 19			    # We expect only 19 bytes in packet	
@@ -27,6 +28,7 @@ def set_serial_port(pserial):
     global packet_bytes
     packet_bytes = 0     
     setupLogging()
+    time.sleep(2)
     logging.info("Setup serial port complete.")
     
 def check_packet():
@@ -41,7 +43,7 @@ def check_packet():
  
     bytes_in_waiting = mySerial.in_waiting
     if (bytes_in_waiting > 0):
-        print 'Total bytes to read is %d' % bytes_in_waiting    
+        #print 'Total bytes to read is %d' % bytes_in_waiting    
         cnt = 0
         while (cnt < bytes_in_waiting):
             # .read(size = 1):
@@ -64,7 +66,7 @@ def check_packet():
             if (packet_bytes > 3):
                 packet_len = (buffer[start_index + 1] << 8) + buffer[start_index + 2] 
                 packet_len += 4                     # Add 4 bytes (First 3 bytes + checksum)
-                print '->Packet len is %d' % packet_len
+                #print '->Packet len is %d' % packet_len
                 if (packet_len is not stdPacketLen):
 		    # Purge this packet
                     start_index = -1
