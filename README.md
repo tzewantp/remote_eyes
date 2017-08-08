@@ -21,6 +21,9 @@ To Do:
 **3. Setting up Chronograf or Grafana for data visualisation:**
    - Refer to:
      http://coendegroot.com/grafana-influxdb-and-python-simple-sample/
+   - Starting Grafana automatically on reboot:
+     Can follow this link. May need to reboot PC twice:
+     https://askubuntu.com/questions/799736/service-grafana-server-does-not-start-automatically-on-ubuntu-16-04/859739
 
 **4. Receiving of XBee messages on BeagleBone:**
    - Refer to the following example:
