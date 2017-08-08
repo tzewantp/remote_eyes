@@ -16,6 +16,7 @@ To Do:
 **2. Setting up of private broker in Ubuntu:**
    - Refer to the following link:
      http://howtoprogram.xyz/2016/10/15/install-mosquitto-mqtt-broker-ubuntu-16-04-lts-xenial-xerus/
+     http://wingsquare.com/blog/setting-up-mqtt-mosquitto-broker-in-ubuntu-linux/
 
 **3. Setting up Chronograf or Grafana for data visualisation:**
    - Refer to:
